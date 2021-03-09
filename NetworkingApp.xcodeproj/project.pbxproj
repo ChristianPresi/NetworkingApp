@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC95359C25F812A300E8AD9B /* VersionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC95359B25F812A300E8AD9B /* VersionsViewModel.swift */; };
 		CABA990D25DDD6DF000EE695 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABA990C25DDD6DF000EE695 /* AppDelegate.swift */; };
 		CABA991325DDD6E0000EE695 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CABA991225DDD6E0000EE695 /* Assets.xcassets */; };
 		CABA991925DDD6E0000EE695 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CABA991725DDD6E0000EE695 /* LaunchScreen.storyboard */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BC95359B25F812A300E8AD9B /* VersionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionsViewModel.swift; sourceTree = "<group>"; };
 		CABA990925DDD6DF000EE695 /* NetworkingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABA990C25DDD6DF000EE695 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CABA991225DDD6E0000EE695 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				CABA992025DDD744000EE695 /* VersionsCoordinator.swift */,
 				CABA993725DDE9CD000EE695 /* VersionsView.swift */,
 				CABA992D25DDDD36000EE695 /* VersionsViewController.swift */,
+				BC95359B25F812A300E8AD9B /* VersionsViewModel.swift */,
 			);
 			path = Versions;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				CABA993825DDE9CD000EE695 /* VersionsView.swift in Sources */,
 				CABA992A25DDDAC7000EE695 /* XcodeVersion.swift in Sources */,
 				CABA990D25DDD6DF000EE695 /* AppDelegate.swift in Sources */,
+				BC95359C25F812A300E8AD9B /* VersionsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

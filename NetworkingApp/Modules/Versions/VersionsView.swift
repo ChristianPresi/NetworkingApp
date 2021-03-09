@@ -13,8 +13,10 @@ class VersionsView: UIView {
     private let spinner = UIActivityIndicatorView(style: .medium)
     private let tableView = UITableView()
     private let textLabel = UILabel()
-
-    init() {
+    private let viewModel: VersionsViewModel
+    
+    init(viewModel: VersionsViewModel) {
+        self.viewModel = viewModel
         super.init(frame: .zero)
 
         setupUI()
@@ -33,6 +35,8 @@ class VersionsView: UIView {
 
     private func setupTable() {
         addSubviewAndEdgeConstraints(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     private func setupSpinner() {
@@ -66,6 +70,39 @@ extension VersionsView {
 
     func render() {
         // TODO: fill this in as needed during interview, including any desired method params
+        if viewModel.showSpinner {
+            spinner.startAnimating()
+            tableView.isHidden = true
+        }
+        else {
+            spinner.stopAnimating()
+            tableView.isHidden = false
+        }
+        
+        guard !viewModel.showErrorLabel else {
+            tableView.isHidden = true
+            textLabel.text = viewModel.errorMessage
+            
+            return
+        }
+        
+        tableView.reloadData()
+    }
+
+}
+
+extension VersionsView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.numberOfCells
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "versionTableCell")
+        
+        cell.textLabel?.text = viewModel.getVersionNumberAt(index: indexPath.row)
+        cell.detailTextLabel?.text = viewModel.getFormattedDateAt(index: indexPath.row)
+        
+        return cell
     }
 
 }

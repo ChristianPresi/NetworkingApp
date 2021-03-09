@@ -10,18 +10,28 @@ import UIKit
 
 class VersionsViewController: UIViewController {
 
-    private let versionsView = VersionsView()
+    private let versionsView:  VersionsView
 
     override func loadView() {
         view = versionsView
     }
 
+    init(viewModel: VersionsViewModel) {
+        versionsView = VersionsView(viewModel: viewModel)
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 extension VersionsViewController {
 
     func render() {
         // TODO: fill this in as needed during interview, including any desired method params
+        versionsView.render()
     }
 
 }

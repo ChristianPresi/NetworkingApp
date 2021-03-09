@@ -18,11 +18,18 @@ class VersionsCoordinator {
     }
 
     private let versionsService = XcodeVersionsService()
-    private let viewController = VersionsViewController()
+    private let viewController: VersionsViewController
+    private let viewModel: VersionsViewModel
+    
+    init() {
+        viewModel = VersionsViewModel()
+        viewController = VersionsViewController(viewModel: viewModel)
+    }
     
     private var state: State = .idle {
         didSet {
             // TODO: fill this in as needed during interview
+            viewController.render()
         }
     }
 
@@ -32,6 +39,22 @@ class VersionsCoordinator {
 
     func start() {
         // TODO: fill this in as needed during interview, including any desired method params
+        state = .loading
+        viewModel.xcVersions = nil
+        viewModel.showSpinner = true
+        
+        versionsService.fetchVersions {[weak self] (xcVersions) in
+            self?.viewModel.xcVersions = xcVersions
+            self?.viewModel.showSpinner = false
+            
+            guard !xcVersions.isEmpty else {
+                self?.state = .failure
+                
+                return
+            }
+            
+            self?.state = .success
+        }
     }
 
 }
